@@ -7,14 +7,17 @@
 
 package frc.robot;
 
+//importing basic libraries
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj.util.Color;
-//updated version 2
+//importing subsystems
+import frc.robot.subsystems.Drivetrain;
 
+//importing color libraries
 import com.revrobotics.ColorSensorV3;
 import com.revrobotics.ColorMatchResult;
 import com.revrobotics.ColorMatch;
@@ -24,6 +27,8 @@ import com.revrobotics.ColorMatch;
  * detect pre-configured colors.
  */
 public class Robot extends TimedRobot {
+  //initializing subsystems
+    private final Drivetrain m_Drivetrain = new Drivetrain();
     private final I2C.Port i2cPort = I2C.Port.kOnboard;//sets up the I2C port
     private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);//sets up a new sensor at the port
     private final ColorMatch m_colorMatcher = new ColorMatch();//sets up the color match system
@@ -47,6 +52,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
+    //establishes the targets
     m_colorMatcher.addColorMatch(kBlueTarget);
     m_colorMatcher.addColorMatch(kGreenTarget);
     m_colorMatcher.addColorMatch(kRedTarget);
