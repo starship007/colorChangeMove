@@ -9,6 +9,7 @@ package frc.robot;
 
 //importing basic libraries
 import edu.wpi.first.wpilibj.I2C;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -21,6 +22,8 @@ import frc.robot.subsystems.Drivetrain;
 import com.revrobotics.ColorSensorV3;
 import com.revrobotics.ColorMatchResult;
 import com.revrobotics.ColorMatch;
+
+
 
 /**
  * This is a simple example to show how the REV Color Sensor V3 can be used to
@@ -44,6 +47,9 @@ public class Robot extends TimedRobot {
    static boolean controlBooleanCode = true; //used as a control when counting the number of changes
    static boolean hasInitialColorBeenSet = false;
    static String initialColor; //used as a placeholder for what the first color the color sensors see is
+
+   
+   
    
    
 
@@ -52,6 +58,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
+    System.out.println("This code is running");
+    
     //establishes the targets
     m_colorMatcher.addColorMatch(kBlueTarget);
     m_colorMatcher.addColorMatch(kGreenTarget);
