@@ -47,9 +47,6 @@ public class Robot extends TimedRobot {
    static boolean controlBooleanCode = true; //used as a control when counting the number of changes
    static boolean hasInitialColorBeenSet = false;
    static String initialColor; //used as a placeholder for what the first color the color sensors see is
-
-   
-   
    
    
 
@@ -73,6 +70,9 @@ public class Robot extends TimedRobot {
     String colorString;
     final ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
 
+
+  
+
     if (match.color == kBlueTarget) {
       colorString = "Blue";
     } else if (match.color == kRedTarget) {
@@ -85,6 +85,10 @@ public class Robot extends TimedRobot {
       colorString = "Unknown";
     }
 
+    if (!Robot.hasInitialColorBeenSet) {
+      Robot.initialColor = colorString;
+      Robot.hasInitialColorBeenSet = true;
+    }
 
     if(!colorString.equals(Robot.initialColor)){
       if(Robot.controlBooleanCode == true){
@@ -96,6 +100,8 @@ public class Robot extends TimedRobot {
   } else{
     Robot.controlBooleanCode = true;
   }
+
+
 
 
     SmartDashboard.putString("Initial Color", Robot.initialColor);
