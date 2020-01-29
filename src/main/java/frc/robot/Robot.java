@@ -6,9 +6,6 @@
 /*----------------------------------------------------------------------------*/
 
 
-//phoenix update
-
-
 package frc.robot;
 
 //importing basic libraries
@@ -35,7 +32,7 @@ import com.revrobotics.ColorMatch;
  */
 public class Robot extends TimedRobot {
   //initializing subsystems
-    private final Drivetrain m_Drivetrain = new Drivetrain();
+    public final static Drivetrain m_Drivetrain = new Drivetrain();
     private final I2C.Port i2cPort = I2C.Port.kOnboard;//sets up the I2C port
     private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);//sets up a new sensor at the port
     private final ColorMatch m_colorMatcher = new ColorMatch();//sets up the color match system
@@ -46,7 +43,7 @@ public class Robot extends TimedRobot {
    private final Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
 
   //for the color change count vairables
-   static int numberOfChange = 0;
+   static public int numberOfChange = 0;
    static boolean isColorTheInitial = true; //used to determine if the color has changed or not
    static boolean controlBooleanCode = true; //used as a control when counting the number of changes
    static boolean hasInitialColorBeenSet = false;
